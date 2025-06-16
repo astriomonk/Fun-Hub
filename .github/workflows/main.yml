@@ -1,0 +1,32 @@
+name: Build EXE
+
+on:
+  push:
+    paths:
+      - '**.py'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pyinstaller pillow pyautogui
+
+      - name: Build .exe
+        run: |
+          pyinstaller --onefile --windowed "Fun hub.py"
+
+      - name: Upload EXE
+        uses: actions/upload-artifact@v3
+        with:
+          name: fun-hub-exe
+          path: dist/Fun hub.exe
