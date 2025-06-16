@@ -1,12 +1,9 @@
 name: Build EXE
 
 on:
-  # Trigger build when you push any Python file
   push:
     paths:
       - '**.py'
-
-  # Allow manual trigger from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -28,10 +25,10 @@ jobs:
 
       - name: 🛠️ Build .EXE with PyInstaller
         run: |
-          pyinstaller --onefile --windowed "Fun hub.py"
+          pyinstaller --onefile --windowed "fun_hub.py"
 
       - name: 📤 Upload Built EXE
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: fun-hub-exe
-          path: dist/Fun hub.exe
+          path: dist/fun_hub.exe
