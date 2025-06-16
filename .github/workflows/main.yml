@@ -1,4 +1,4 @@
-name: Build EXE
+name: Build Fun Hub EXE
 
 on:
   push:
@@ -11,23 +11,23 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: 📦 Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: 🐍 Set up Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: 📥 Install Dependencies
+      - name: Install dependencies
         run: |
-          pip install pyinstaller pillow pyautogui
+          pip install pyinstaller
 
-      - name: 🛠️ Build .EXE with PyInstaller
+      - name: Build executable with PyInstaller
         run: |
-          pyinstaller --onefile --windowed "fun_hub.py"
+          pyinstaller --onefile --windowed fun_hub.py
 
-      - name: 📤 Upload Built EXE
+      - name: Upload EXE artifact
         uses: actions/upload-artifact@v4
         with:
           name: fun-hub-exe
