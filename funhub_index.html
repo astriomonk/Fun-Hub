@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fun Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+    .hidden { display: none; }
+    .centered {
+      max-width: 600px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    button {
+      background: #222;
+      color: #fff;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    input {
+      padding: 10px;
+      width: 80%;
+      margin-top: 10px;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div id="lockscreen" class="centered">
+    <h2>Enter Access Code</h2>
+    <input type="password" id="passcode" placeholder="Access code..." />
+    <button onclick="checkCode()">Unlock</button>
+  </div>
+
+  <div id="main" class="centered hidden">
+    <h1>🌀 Fun Hub</h1>
+    <button onclick="roastMe()">AI Roast Bot</button>
+    <button onclick="complimentMe()">Compliment Generator</button>
+    <button onclick="fakeTherapist()">Fake Therapist</button>
+    <button onclick="loveCalc()">Love Calculator</button>
+    <button onclick="fakeFlash()">Fake Flash</button>
+    <button onclick="fakeBSOD()">Fake Blue Screen</button>
+
+    <div id="output"></div>
+  </div>
+
+  <script>
+    const accessCode = "astrio";
+
+    const roasts = [
+      "You're like a cloud. When you disappear, it's a beautiful day.",
+      "You're not stupid; you just have bad luck thinking.",
+      "You bring everyone so much joy… when you leave the room.",
+      "You're proof that even evolution takes a break sometimes.",
+      "You're as useless as the 'g' in lasagna.",
+      "You're the reason they put directions on shampoo bottles.",
+      "You have something on your chin... no, the third one down.",
+      "You're like a software update—always interrupting and never helpful.",
+      "You're like a slinky: not really good for anything, but you bring a smile when pushed down the stairs.",
+      "You're slower than dial-up internet.",
+      "You're the human version of a potato.",
+      "You're like Internet Explorer, just a little too late.",
+      "You're more disappointing than a broken pencil.",
+      "Clippy called. They want their embarrassment back.",
+      "You make a 404 error look intelligent.",
+      "You're like a traffic cone: bright, loud, and completely in the way.",
+      "You're as helpful as a wet sock.",
+      "You're more awkward than a Zoom call with no sound.",
+      "You're like a bad Wi-Fi connection — always dropping off.",
+      "You're as sharp as a marble.",
+      "You're about as useful as a chocolate teapot.",
+      "You're like Windows ME: confusing and short-lived.",
+      "You're the reason the gene pool needs a lifeguard.",
+      "You're as bright as a black hole.",
+      "You're the glitch in life's simulation.",
+      "You're a few bytes short of a full upload.",
+      "You're like a pop-up ad: annoying and instantly dismissed.",
+      "You're the human equivalent of buffering.",
+      "You bring static to an already bad signal.",
+      "You're like autocorrect — nobody asked for you but here you are.",
+      "You're like a group chat with one person talking: pointless.",
+      "You're what happens when copy and paste fails."
+    ];
+
+    const compliments = [
+      "You're cooler than a snowman in a freezer.",
+      "You're like a ray of sunshine in a dark room.",
+      "You're smarter than Google and cuter than a cat meme.",
+      "You make even Mondays feel like Fridays!"
+    ];
+
+    const therapistReplies = [
+      "Tell me more about how that made your goldfish feel.",
+      "Interesting... but have you tried yelling into a pillow?",
+      "Maybe you're just tired. Or cursed.",
+      "Sounds like a you problem."
+    ];
+
+    function checkCode() {
+      const input = document.getElementById("passcode").value;
+      if (input === accessCode) {
+        document.getElementById("lockscreen").classList.add("hidden");
+        document.getElementById("main").classList.remove("hidden");
+      } else {
+        alert("Wrong code");
+      }
+    }
+
+    function roastMe() {
+      const out = document.getElementById("output");
+      out.innerText = roasts[Math.floor(Math.random() * roasts.length)];
+    }
+
+    function complimentMe() {
+      const out = document.getElementById("output");
+      out.innerText = compliments[Math.floor(Math.random() * compliments.length)];
+    }
+
+    function fakeTherapist() {
+      const out = document.getElementById("output");
+      out.innerText = therapistReplies[Math.floor(Math.random() * therapistReplies.length)];
+    }
+
+    function loveCalc() {
+      const out = document.getElementById("output");
+      const score = Math.floor(Math.random() * 101);
+      const emoji = score > 50 ? "❤️" : "💔";
+      out.innerText = `Love Score: ${score}% ${emoji}`;
+    }
+
+    function fakeFlash() {
+      const flash = document.createElement("div");
+      flash.style.position = "fixed";
+      flash.style.top = 0;
+      flash.style.left = 0;
+      flash.style.width = "100%";
+      flash.style.height = "100%";
+      flash.style.background = "white";
+      flash.style.zIndex = 9999;
+      document.body.appendChild(flash);
+      setTimeout(() => flash.remove(), 500);
+    }
+
+    function fakeBSOD() {
+      const bsod = document.createElement("div");
+      bsod.style.position = "fixed";
+      bsod.style.top = 0;
+      bsod.style.left = 0;
+      bsod.style.width = "100%";
+      bsod.style.height = "100%";
+      bsod.style.background = "#0000AA";
+      bsod.style.color = "white";
+      bsod.style.font = "16px Consolas, monospace";
+      bsod.style.padding = "40px";
+      bsod.style.zIndex = 9999;
+      bsod.innerHTML = `💀 A problem has been detected and Windows has been shut down...<br><br>Just kidding. Click anywhere to exit.`;
+      bsod.addEventListener("click", () => bsod.remove());
+      document.body.appendChild(bsod);
+    }
+  </script>
+</body>
+</html>
