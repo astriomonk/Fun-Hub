@@ -121,7 +121,7 @@ def open_face_tracker():
 
 def start_auto_typer():
     def type_loop():
-        phrases = ["I'm watching you...", "Did you hear that?", "👀", "You can't escape."]
+        phrases = ["I'm watching you...", "Did you hear that?", "Help me.", "You can't escape.","I'm coming for you.","behind you."]
         while True:
             time.sleep(random.randint(10, 20))
             pyautogui.write(random.choice(phrases), interval=0.05)
